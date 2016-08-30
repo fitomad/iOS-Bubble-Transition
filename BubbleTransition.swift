@@ -11,8 +11,9 @@ import Foundation
 
 @objc public class BubbleTransition: NSObject 
 {
-     /// Point in which we situate the bubble
-    public var startingPoint: CGPoint!
+    /// Point in which we situate the bubble.
+    /// By default Upper Left corner
+    public var startingPoint: CGPoint
     
     /// The transition direction.
     public var transitionMode: TransitionMode
@@ -36,6 +37,7 @@ import Foundation
         self.presentingDuration = 0.5
         self.dismissDuration = 0.35
         
+        self.startingPoint = CGPointMake(0.0, 0.0)
         self.transitionMode = TransitionMode.Present
     }
 
