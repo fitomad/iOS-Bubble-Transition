@@ -80,14 +80,17 @@ extension BubbleTransition: UIViewControllerAnimatedTransitioning
     */
     public func animateTransition(transitionContext: UIViewControllerContextTransitioning) 
     {
-        guard let containerView = transitionContext.containerView() else 
+        guard let 
+            containerView = transitionContext.containerView(),
+            toView = transitionContext.viewForKey(UITransitionContextToViewKey),
+            fromView = transitionContext.viewForKey(UITransitionContextFromViewKey)
+        else 
         {
             return
         }
 
         if transitionMode == TransitionMode.Present 
         {
-            let toView: UIView = transitionContext.viewForKey(UITransitionContextToViewKey)!
             let originalCenter = toView.center
             let originalSize = toView.frame.size
 
@@ -135,9 +138,6 @@ extension BubbleTransition: UIViewControllerAnimatedTransitioning
         } 
         else 
         {
-            let fromView: UIView = transitionContext.viewForKey(UITransitionContextFromViewKey)!
-            let toView: UIView = transitionContext.viewForKey(UITransitionContextToViewKey)!
-            
             let originalSize = fromView.frame.size
 
             self.bubble.frame = self.frameForBubbleWithSize(originalSize, start: startingPoint)
