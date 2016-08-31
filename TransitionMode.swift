@@ -14,7 +14,7 @@ import Foundation
     - Present: For presenting a new controller
     - Dismiss: For dismissing the current controller
 */
-public enum TransitionMode
+@objc public enum TransitionMode: Int
 {
 	case Present
 	case Dismiss
